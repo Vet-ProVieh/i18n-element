@@ -1,0 +1,138 @@
+<!--
+`i18n-element`
+An Element-Extension to translate its content. You can define a link-tag in the head like 
+  <link i18n-data rel="import" href="language.json">
+The Element loads it's content to translate the inherited key.
+@demo demo/index.html
+-->
+<script>
+  (() => {
+    'use strict';
+    class I18nElement extends HTMLElement {
+
+      attributeChangedCallback(name, old, value) {
+        if (old !== value) {
+          this[name] = value;
+        }
+      }
+
+      constructor() {
+        super();
+        /**
+         * @type {!Object}
+         * @private
+         */
+        this._properties = {
+          key: '',
+          boolean: false,
+          language: this._getLanguage(),
+          value: '',
+          languageDb: this._loadLanguageDb()
+        };
+      }
+
+      /** 
+       * @property {boolean|null} translated
+       */
+      get translated() {
+        return this._properties.translated;
+      }
+
+      set translated(val) {
+        if (val !== this.translated) {
+          this._properties.translated = val;
+          this._updateRendering();
+        }
+      }
+
+      /** 
+       * @property {string|null} key
+       */
+      get key() {
+        return this._properties.key;
+      }
+
+      set key(val) {
+        if (val !== this.key) {
+          this._properties.key = val;
+          this._translate();
+          this._updateRendering();
+        }
+      }
+
+
+      connectedCallback() {
+        // Lazy creation of shadowRoot.
+        if (!this.translated) {
+          this.key = this.innerHTML;
+        }
+      }
+
+      /**
+       *  Getting current Browser-Language
+       */
+      _getLanguage() {
+        var lang = (navigator.language || navigator.userLanguage);
+        return lang.substring(0, 2).toLowerCase();
+      }
+
+      /**
+       * Load-Language Dictonary.
+       * Dictonary must defined as 
+       */
+      _loadLanguageDb() {
+        try {
+          if (!window.languageDb) {
+            window.languageDb = JSON.parse(document.querySelectorAll("link[i18n-data]")[0].import.body.innerHTML);
+          }
+          return window.languageDb
+        } catch (ex) {
+          console.log("Could not Load Dictonary. Have you added a link-tag?")
+          return {};
+        }
+      }
+      /**
+       * Translate Content
+       * InnerHtml ist Recognized as the current language
+       */
+      _translate() {
+        try {
+          var currentLangDb = this._properties.languageDb[this._properties.language];
+          var keySplitted = this.key.split(".");
+
+          while (keySplitted.length > 1) {
+            currentLangDb = currentLangDb[keySplitted.shift()]
+          }
+
+          this._properties.value = currentLangDb[keySplitted[0]];
+          this.translated = true;
+        } catch (ex) {
+          console.log("Key '" + this.key + "' in language '" + this._properties.language + "' not found.");
+        }
+      }
+
+      /**
+       * Find Language-Key in Dictonary
+       */
+      _findInDictonary(key) {
+        var currentLangDb = this._properties.languageDb[this._properties.language];
+        var keySplitted = this.key.split(".");
+
+        while (keySplitted.length > 1) {
+          currentLangDb = currentLangDb[keySplitted.shift()]
+        }
+        return currentLangDb[keySplitted[0]];
+      }
+
+      /**
+       * @private
+       */
+      _updateRendering() {
+        if (this.translated) {
+          this.innerHTML = this._properties.value || this.key + "?";
+        }
+      }
+    }
+    customElements.define('i18n-element', I18nElement);
+  })();
+</script>

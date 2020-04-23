@@ -1,0 +1,27 @@
+{
+  "name": "i18n-element",
+  "author": {
+    "name": "Tobias Münch",
+    "email": "tobias.muench@hs-osnabrueck.de",
+    "url": ""
+  },
+  "description": "An Element-Extension to translate its content.",
+  "main": "i18n-element.html",
+  "version": "0.0.1",
+  "license": "MIT",
+  "keywords": [
+    "web-components",
+    "webcomponents"
+  ],
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "install": "polymer install",
+    "start": "polymer serve",
+    "test": "polymer test"
+  },
+  "devDependencies": {
+    "polymer-cli": "^1.0.0"
+  }
+}

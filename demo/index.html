@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+  <title>i18n-element demo</title>
+
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+
+  <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
+  <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+  <link rel="import" href="../i18n-element.html">
+
+  <!-- Import Language JSON to HTML so you can refer to it -->
+  <link i18n-data rel="import" href="language.html">
+  </script>
+
+  <custom-style>
+    <style is="custom-style" include="demo-pages-shared-styles"></style>
+  </custom-style>
+</head>
+
+<body>
+  <div class="vertical-section-container centered">
+    <h3>Basic i18n-element demo</h3>
+    <demo-snippet>
+      <template>
+        <p>Firstname: <i18n-element>person.firstname</i18n-element></p>
+        <p>Lastname: <i18n-element>person.lastname</i18n-element></p>
+        <p>Not-Known: <i18n-element>unkown</i18n-element></p>
+      </template>
+    </demo-snippet>
+  </div>
+</body>
+
+</html>
