@@ -16,6 +16,7 @@ It's not as complex as other i18n-components, but it is simple and extendable. T
     <script src="../webcomponentsjs/webcomponents-loader.js"></script>
     <link i18n-data rel="import" href="demo/language.html">
     <link rel="import" href="i18n-translate.html">
+    <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
 ```
