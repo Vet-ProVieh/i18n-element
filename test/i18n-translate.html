@@ -5,38 +5,38 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-  <title>i18n-element test</title>
+  <title>i18n-translate test</title>
 
   <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
   <script src="../../web-component-tester/browser.js"></script>
   <link i18n-data rel="import" href="../demo/language.html">
-  <link rel="import" href="../i18n-element.html">
+  <link rel="import" href="../i18n-translate.html">
 </head>
 
 <body>
 
   <test-fixture id="BasicKeyWorks">
     <template>
-      <i18n-element>testkey</i18n-element>
+      <i18n-translate>testkey</i18n-translate>
     </template>
   </test-fixture>
 
   <test-fixture id="ChainedKeyWorks">
     <template>
-      <i18n-element>person.firstname</i18n-element>
+      <i18n-translate>person.firstname</i18n-translate>
     </template>
   </test-fixture>
 
   <test-fixture id="UnknownKeyWorks">
     <template>
-      <i18n-element>unknown.key</i18n-element>
+      <i18n-translate>unknown.key</i18n-translate>
     </template>
   </test-fixture>
 
   <script>
   
 
-    suite('i18n-element', function () {
+    suite('i18n-translate', function () {
 
       test('instantiating the element with basic key works', function () {
         var element = fixture('BasicKeyWorks');

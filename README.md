@@ -1,4 +1,4 @@
-# \<i18n-element\>
+# i18n-translate: Web-Component for Translation
 
 An Element-Extension to translate it's content. It is written with Vanilla-JS and HTML5-Standards. It recognizes the language of the browser and searching up your translation-keys in a dictonary. You can provide your JSON-Dictonary on your own.
 
@@ -11,14 +11,14 @@ An Element-Extension to translate it's content. It is written with Vanilla-JS an
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-loader.js"></script>
-    <link rel="import" href="i18n-element.html">
+    <link rel="import" href="i18n-translate.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
 ```
 -->
 ```html
-<i18n-element>your.key.to.translate</i18n-element>
+<i18n-translate>your.key.to.translate</i18n-translate>
 ```
 
 ## 1. Requirements
@@ -32,7 +32,7 @@ You had to include your Language-DB as a JSON-File into the HTML-Document. Make 
 <head>
   <link i18n-data rel="import" href="language.html">
 </head>
-<i18n-element>your.key.to.translate</i18n-element>
+<i18n-translate>your.key.to.translate</i18n-translate>
 ```
 
 So your `language.html` should contain the following:
@@ -51,6 +51,10 @@ So your `language.html` should contain the following:
 }
 ```
 
+## 3. Installation
+
+
+
 ## Viewing Your Element
 
 ```
@@ -63,9 +67,18 @@ $ polymer serve --open
 $ polymer test
 ```
 
-## Belonging
+## Contributing
+1. Fork it!
+2. Create your feature branch: git checkout -b my-new-feature
+3. Commit your changes: git commit -am 'Add some feature'
+4. Push to the branch: git push origin my-new-feature
+5. Submit a pull request :D
+
+## Credits
 
 This web-component belongs to the EFRE research-project Vet:ProVieh from the University of Applied Science Osnabrück.
+
+Thanks to Adam Bien for his inspriation in the blog-entry http://www.adam-bien.com/roller/abien/entry/simplest_possible_internationalization_with_vanilla. 
 
 ## License
 

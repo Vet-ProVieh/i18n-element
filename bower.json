@@ -1,7 +1,7 @@
 {
-  "name": "i18n-element",
+  "name": "i18n-translate",
   "description": "An Element-Extension to translate its content. You&#39;ll need a descriptive JSON-File to use it.",
-  "main": "i18n-element.html",
+  "main": "i18n-translate.html",
   "version": "0.0.1",
   "license": "MIT",
   "keywords": [
