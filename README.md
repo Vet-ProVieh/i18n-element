@@ -2,6 +2,8 @@
 
 An Element-Extension to translate it's content. It is written with Vanilla-JS and HTML5-Standards. It recognizes the language of the browser and searching up your translation-keys in a dictonary. You can provide your JSON-Dictonary on your own.
 
+It's not as complex as other i18n-components, but it is simple and extendable. This project is at an early stage and needs further development.
+
 <!-- 
   The next comment block is used by webcomponents.org to enable inline demo.
   Visit https://www.webcomponents.org/publish for more details.
