@@ -55,7 +55,10 @@ So your `language.html` should contain the following:
 
 ## 3. Installation
 
+```npm i @tomuench/i18n-translate```
 
+# Development
+In the following section it is described how to extend this web-component.
 
 ## Viewing Your Element
 
