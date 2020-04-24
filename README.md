@@ -1,3 +1,4 @@
+
 # i18n-translate: Web-Component for Translation
 
 An Element-Extension to translate it's content. It is written with Vanilla-JS and HTML5-Standards. It recognizes the language of the browser and searching up your translation-keys in a dictonary. You can provide your JSON-Dictonary on your own.
@@ -15,15 +16,14 @@ It's not as complex as other i18n-components, but it is simple and extendable. T
     <script src="../webcomponentsjs/webcomponents-loader.js"></script>
     <link i18n-data rel="import" href="demo/language.html">
     <link rel="import" href="i18n-translate.html">
-    <p>Firstname: <i18n-translate>person.firstname</i18n-translate></p>
-    <p>Lastname: <i18n-translate>person.lastname</i18n-translate></p>
-    <p>Not-Known: <i18n-translate>unkown</i18n-translate></p>
   </template>
 </custom-element-demo>
 ```
 -->
 ```html
-<i18n-translate>your.key.to.translate</i18n-translate>
+    <p>Firstname: <i18n-translate>person.firstname</i18n-translate></p>
+    <p>Lastname: <i18n-translate>person.lastname</i18n-translate></p>
+    <p>Not-Known: <i18n-translate>unkown</i18n-translate></p>
 ```
 
 ## 1. Requirements
