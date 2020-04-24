@@ -1,51 +1,71 @@
 <!doctype html>
 <html lang="en">
-  <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <title>i18n-element test</title>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
 
-    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
-    <script src="../../web-component-tester/browser.js"></script>
+  <title>i18n-element test</title>
 
-    <link rel="import" href="../i18n-element.html">
-  </head>
-  <body>
+  <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+  <script src="../../web-component-tester/browser.js"></script>
+  <link i18n-data rel="import" href="../demo/language.html">
+  <link rel="import" href="../i18n-element.html">
+</head>
 
-    <test-fixture id="BasicTestFixture">
-      <template>
-        <i18n-element></i18n-element>
-      </template>
-    </test-fixture>
+<body>
 
-    <test-fixture id="ChangedPropertyTestFixture">
-      <template>
-        <pi18n-element></i18n-element>
-      </template>
-    </test-fixture>
+  <test-fixture id="BasicKeyWorks">
+    <template>
+      <i18n-element>testkey</i18n-element>
+    </template>
+  </test-fixture>
 
-    <script>
-      suite('i18n-element', function() {
+  <test-fixture id="ChainedKeyWorks">
+    <template>
+      <i18n-element>person.firstname</i18n-element>
+    </template>
+  </test-fixture>
 
-        test('instantiating the element with default properties works', function() {
-          var element = fixture('BasicTestFixture');
-          assert.equal(element.prop1, 'i18n-element');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.textContent, 'Hello i18n-element!');
-        });
+  <test-fixture id="UnknownKeyWorks">
+    <template>
+      <i18n-element>unknown.key</i18n-element>
+    </template>
+  </test-fixture>
 
-        test('setting a property on the element works', function() {
-          var element = fixture('ChangedPropertyTestFixture');
-          assert.equal(element.prop1, 'new-prop1');
-          var elementShadowRoot = element.shadowRoot;
-          var elementHeader = elementShadowRoot.querySelector('h2');
-          assert.equal(elementHeader.textContent, 'Hello new-prop1!');
-        });
+  <script>
+  
 
+    suite('i18n-element', function () {
+
+      test('instantiating the element with basic key works', function () {
+        var element = fixture('BasicKeyWorks');
+        element.language = "de";
+        assert.equal(element.key, 'testkey');
+        assert.equal(element.translated, true);
+        assert.equal(element.innerHTML, "Testing");
       });
-    </script>
 
-  </body>
+      test('instantiating the element with chained key works', function () {
+        var element = fixture('ChainedKeyWorks');
+        element.language = "de";
+        assert.equal(element.key, 'person.firstname');
+        assert.equal(element.translated, true);
+        assert.equal(element.innerHTML, "Vorname");
+      });
+
+      
+      test('instantiating the element with unkown key works', function () {
+        var element = fixture('UnknownKeyWorks');
+        element.language = "de";
+        assert.equal(element.key, 'unknown.key');
+        assert.equal(element.translated, false);
+        assert.equal(element.innerHTML, "unknown.key?");
+      });
+
+    });
+  </script>
+
+</body>
+
 </html>

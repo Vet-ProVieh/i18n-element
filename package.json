@@ -3,7 +3,7 @@
   "author": {
     "name": "Tobias Münch",
     "email": "tobias.muench@hs-osnabrueck.de",
-    "url": ""
+    "url": "https://github.com/Vet-ProVieh/i18n-element"
   },
   "description": "An Element-Extension to translate its content.",
   "main": "i18n-element.html",
@@ -11,7 +11,9 @@
   "license": "MIT",
   "keywords": [
     "web-components",
-    "webcomponents"
+    "webcomponents",
+    "language",
+    "i18n"
   ],
   "directories": {
     "test": "test"

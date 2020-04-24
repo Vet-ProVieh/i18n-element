@@ -38,9 +38,27 @@ The Element loads it's content to translate the inherited key.
         return this._properties.translated;
       }
 
-      set translated(val) {
-        if (val !== this.translated) {
-          this._properties.translated = val;
+      /**
+       *  Translated Value
+       */
+      get value(){
+        return this._properties.value;
+      }
+
+      /** 
+       * @property {string|null} language
+       */
+      get language() {
+        return this._properties.language;
+      }
+
+      /**
+       * Set Language manual
+       */
+      set language(val) {
+        if (val !== this.key) {
+          this._properties.language = val;
+          this._translate();
           this._updateRendering();
         }
       }
@@ -83,9 +101,10 @@ The Element loads it's content to translate the inherited key.
       _loadLanguageDb() {
         try {
           if (!window.languageDb) {
-            window.languageDb = JSON.parse(document.querySelectorAll("link[i18n-data]")[0].import.body.innerHTML);
+            console.log(document.querySelectorAll("link[i18n-data]")[0].innerHTML);
+            window.languageDb = JSON.parse(document.querySelectorAll("link[i18n-data]")[0].import.innerHTML);
           }
-          return window.languageDb
+          return window.languageDb;
         } catch (ex) {
           console.log("Could not Load Dictonary. Have you added a link-tag?")
           return {};
@@ -105,9 +124,10 @@ The Element loads it's content to translate the inherited key.
           }
 
           this._properties.value = currentLangDb[keySplitted[0]];
-          this.translated = true;
+          this._properties.translated = this._properties.value != undefined;
         } catch (ex) {
           console.log("Key '" + this.key + "' in language '" + this._properties.language + "' not found.");
+          this._properties.translated = false;
         }
       }
 
@@ -129,7 +149,9 @@ The Element loads it's content to translate the inherited key.
        */
       _updateRendering() {
         if (this.translated) {
-          this.innerHTML = this._properties.value || this.key + "?";
+          this.innerHTML = this._properties.value;
+        } else {
+          this.innerHTML = this.key + "?";
         }
       }
     }
