@@ -7,11 +7,11 @@
   },
   "description": "An Element-Extension to translate its content.",
   "main": "i18n-translate.html",
-  "version": "0.0.3",
+  "version": "0.0.5",
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Vet-ProVieh/i18n-translate"
+    "url": "git://github.com/Vet-ProVieh/i18n-translate.git"
   },
   "keywords": [
     "web-components",
