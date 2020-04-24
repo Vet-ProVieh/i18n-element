@@ -13,8 +13,11 @@ It's not as complex as other i18n-components, but it is simple and extendable. T
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-loader.js"></script>
+    <link i18n-data rel="import" href="demo/language.html">
     <link rel="import" href="i18n-translate.html">
-    <next-code-block></next-code-block>
+    <p>Firstname: <i18n-translate>person.firstname</i18n-translate></p>
+    <p>Lastname: <i18n-translate>person.lastname</i18n-translate></p>
+    <p>Not-Known: <i18n-translate>unkown</i18n-translate></p>
   </template>
 </custom-element-demo>
 ```
